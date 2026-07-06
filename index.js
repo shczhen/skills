@@ -11,7 +11,7 @@
  * Configuration via environment variables:
  *   MIMO_API_BASE_URL  — API endpoint (default: https://token-plan-cn.xiaomimimo.com/anthropic)
  *   MIMO_API_KEY       — API key (required)
- *   MIMO_MODEL         — model name (default: mimo-v2.5-pro)
+ *   MIMO_MODEL         — model name (default: mimo-v2.5)
  */
 
 import { readFileSync, existsSync, statSync } from "node:fs";
@@ -24,7 +24,7 @@ import { z } from "zod";
 
 const API_BASE_URL = (process.env.MIMO_API_BASE_URL || "https://token-plan-cn.xiaomimimo.com/anthropic").replace(/\/+$/, "");
 const API_KEY = process.env.MIMO_API_KEY || "";
-const MODEL = process.env.MIMO_MODEL || "mimo-v2.5-pro";
+const MODEL = process.env.MIMO_MODEL || "mimo-v2.5";
 
 if (!API_KEY) {
   console.error("[mimo-image] MIMO_API_KEY is required.");

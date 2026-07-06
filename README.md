@@ -18,7 +18,7 @@ claude mcp add mimo-image \
 |---|---|---|
 | `MIMO_API_BASE_URL` | `https://token-plan-cn.xiaomimimo.com/anthropic` | mimo API endpoint |
 | `MIMO_API_KEY` | **(required)** | API key |
-| `MIMO_MODEL` | `mimo-v2.5-pro` | Model name |
+| `MIMO_MODEL` | `mimo-v2.5` | Model name |
 
 ## Tools
 
