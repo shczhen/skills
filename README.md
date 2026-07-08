@@ -1,10 +1,10 @@
 # skills
 
-Personal Codex skills and bundled agent tools.
+Personal agent skills and bundled tools, installable with [skills.sh](https://www.skills.sh/shczhen/skills).
 
 ## Install
 
-Install this skill collection with the skills.sh CLI:
+Install this collection with the skills.sh CLI:
 
 ```bash
 npx skills@latest add shczhen/skills
@@ -32,49 +32,5 @@ scripts, templates, and MCP servers inside that skill's `assets/`, `scripts/`, o
 
 | Skill | Description |
 |---|---|
-| `gist-screenshot-evidence` | Publishes screenshots to a GitHub Gist and returns Markdown image links for PR or issue comments. |
-| `mimo-image` | Uses a bundled MCP server to send images, OCR tasks, and screenshots to `mimo-v2.5`. |
-
-## Gist Screenshot Evidence
-
-The first real publish creates and remembers a secret gist:
-
-```bash
-python3 skills/gist-screenshot-evidence/scripts/publish_screenshot.py ./screenshot.png --create
-```
-
-Later publishes reuse the remembered gist automatically:
-
-```bash
-python3 skills/gist-screenshot-evidence/scripts/publish_screenshot.py ./screenshot.png
-```
-
-The local gist id is stored in `skills/gist-screenshot-evidence/.local/config.json`.
-That file is intentionally ignored by git.
-
-## Mimo Image MCP
-
-Install the server dependencies once:
-
-```bash
-npm install --prefix skills/mimo-image/assets/mcp-server
-```
-
-Then register the MCP server:
-
-```bash
-MCP_SERVER_PATH="$(pwd)/skills/mimo-image/assets/mcp-server/index.js"
-
-claude mcp add mimo-image \
-  -e MIMO_API_BASE_URL=https://your-mimo-api.example.com/anthropic \
-  -e MIMO_API_KEY=your-key \
-  -- node "$MCP_SERVER_PATH"
-```
-
-Environment variables:
-
-| Variable | Default | Description |
-|---|---|---|
-| `MIMO_API_BASE_URL` | **(required)** | Mimo Anthropic-compatible API endpoint |
-| `MIMO_API_KEY` | **(required)** | Mimo API key |
-| `MIMO_MODEL` | `mimo-v2.5` | Model name |
+| [`gist-screenshot-evidence`](skills/gist-screenshot-evidence/README.md) | Publish screenshot evidence to a reusable secret GitHub Gist for PR or issue comments. |
+| [`mimo-image`](skills/mimo-image/README.md) | Inspect images, OCR text, and explain screenshots through a bundled Mimo MCP server. |

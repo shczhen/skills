@@ -1,6 +1,6 @@
 ---
 name: mimo-image
-description: Use mimo-v2.5 for image recognition, OCR, and screenshot explanation through a bundled MCP server. Use when Codex needs to inspect an image file, read text from an image, explain a code/error/UI screenshot, or work around an environment where the active model cannot receive images directly.
+description: Use a Mimo vision model for image recognition, OCR, and screenshot explanation through a bundled MCP server. Use when an agent needs to inspect an image file, read text from an image, explain a code/error/UI screenshot, or work around an environment where the active model cannot receive images directly.
 ---
 
 # Mimo Image
@@ -30,14 +30,16 @@ Configure it with:
 claude mcp add mimo-image \
   -e MIMO_API_BASE_URL=<your-mimo-api-base-url> \
   -e MIMO_API_KEY=<your-key> \
+  -e MIMO_API_FORMAT=anthropic \
   -- node <path-to-this-skill>/assets/mcp-server/index.js
 ```
 
 Environment variables:
 
-- `MIMO_API_BASE_URL`: required Anthropic-compatible API endpoint
+- `MIMO_API_BASE_URL`: required Mimo vision API endpoint
 - `MIMO_API_KEY`: required API key
 - `MIMO_MODEL`: defaults to `mimo-v2.5`
+- `MIMO_API_FORMAT`: `anthropic` or `openai`; defaults to `anthropic`
 
 ## Workflow
 

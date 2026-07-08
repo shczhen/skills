@@ -1,17 +1,18 @@
 #!/usr/bin/env node
 
 /**
- * mimo-image — MCP server that forwards images to mimo-v2.5 for recognition
+ * mimo-image — MCP server that forwards images to a Mimo vision model
  *
- * Problem: Claude Code strips images before sending to the model.
+ * Problem: some agent runtimes cannot pass images to the active model.
  * Solution: Accept image paths/base64 via MCP tools, send them to
- *           mimo-v2.5's Anthropic-compatible API with proper image support,
+ *           a Mimo vision endpoint with proper image support,
  *           and return the text response.
  *
  * Configuration via environment variables:
- *   MIMO_API_BASE_URL  — Anthropic-compatible API endpoint (required)
+ *   MIMO_API_BASE_URL  — Mimo vision API endpoint (required)
  *   MIMO_API_KEY       — API key (required)
  *   MIMO_MODEL         — model name (default: mimo-v2.5)
+ *   MIMO_API_FORMAT    — anthropic or openai (default: anthropic)
  */
 
 import { readFileSync, existsSync, statSync } from "node:fs";
@@ -25,6 +26,7 @@ import { z } from "zod";
 const API_BASE_URL = (process.env.MIMO_API_BASE_URL || "").replace(/\/+$/, "");
 const API_KEY = process.env.MIMO_API_KEY || "";
 const MODEL = process.env.MIMO_MODEL || "mimo-v2.5";
+const API_FORMAT = (process.env.MIMO_API_FORMAT || "anthropic").toLowerCase();
 
 if (!API_BASE_URL) {
   console.error("[mimo-image] MIMO_API_BASE_URL is required.");
@@ -33,6 +35,11 @@ if (!API_BASE_URL) {
 
 if (!API_KEY) {
   console.error("[mimo-image] MIMO_API_KEY is required.");
+  process.exit(1);
+}
+
+if (!["anthropic", "openai"].includes(API_FORMAT)) {
+  console.error("[mimo-image] MIMO_API_FORMAT must be 'anthropic' or 'openai'.");
   process.exit(1);
 }
 
@@ -79,6 +86,14 @@ function resolveImage(input) {
 async function callMimo(image, prompt) {
   const { mediaType, base64Data } = resolveImage(image);
 
+  if (API_FORMAT === "openai") {
+    return callOpenAICompatibleMimo({ mediaType, base64Data, prompt });
+  }
+
+  return callAnthropicCompatibleMimo({ mediaType, base64Data, prompt });
+}
+
+async function callAnthropicCompatibleMimo({ mediaType, base64Data, prompt }) {
   const body = {
     model: MODEL,
     max_tokens: 4096,
@@ -113,6 +128,42 @@ async function callMimo(image, prompt) {
 
   const data = await res.json();
   return data.content?.[0]?.text || "(no response)";
+}
+
+async function callOpenAICompatibleMimo({ mediaType, base64Data, prompt }) {
+  const body = {
+    model: MODEL,
+    max_tokens: 4096,
+    messages: [
+      {
+        role: "user",
+        content: [
+          { type: "text", text: prompt },
+          {
+            type: "image_url",
+            image_url: { url: `data:${mediaType};base64,${base64Data}` },
+          },
+        ],
+      },
+    ],
+  };
+
+  const res = await fetch(`${API_BASE_URL}/v1/chat/completions`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${API_KEY}`,
+    },
+    body: JSON.stringify(body),
+  });
+
+  if (!res.ok) {
+    const errText = await res.text().catch(() => "");
+    throw new Error(`mimo API ${res.status}: ${errText}`);
+  }
+
+  const data = await res.json();
+  return data.choices?.[0]?.message?.content || "(no response)";
 }
 
 // ── MCP Server ───────────────────────────────────────────────────────────────
