@@ -1,0 +1,12 @@
+interface:
+  display_name: "Mimo Image"
+  short_description: "Inspect images through Mimo vision"
+  default_prompt: "Use $mimo-image to inspect this image or screenshot through Mimo."
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "mimo-image"
+      description: "Local MCP server that forwards image tasks to mimo-v2.5."
+      transport: "stdio"
+policy:
+  allow_implicit_invocation: true

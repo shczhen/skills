@@ -9,7 +9,7 @@
  *           and return the text response.
  *
  * Configuration via environment variables:
- *   MIMO_API_BASE_URL  — API endpoint (default: https://token-plan-cn.xiaomimimo.com/anthropic)
+ *   MIMO_API_BASE_URL  — Anthropic-compatible API endpoint (required)
  *   MIMO_API_KEY       — API key (required)
  *   MIMO_MODEL         — model name (default: mimo-v2.5)
  */
@@ -22,9 +22,14 @@ import { z } from "zod";
 
 // ── Config ───────────────────────────────────────────────────────────────────
 
-const API_BASE_URL = (process.env.MIMO_API_BASE_URL || "https://token-plan-cn.xiaomimimo.com/anthropic").replace(/\/+$/, "");
+const API_BASE_URL = (process.env.MIMO_API_BASE_URL || "").replace(/\/+$/, "");
 const API_KEY = process.env.MIMO_API_KEY || "";
 const MODEL = process.env.MIMO_MODEL || "mimo-v2.5";
+
+if (!API_BASE_URL) {
+  console.error("[mimo-image] MIMO_API_BASE_URL is required.");
+  process.exit(1);
+}
 
 if (!API_KEY) {
   console.error("[mimo-image] MIMO_API_KEY is required.");
