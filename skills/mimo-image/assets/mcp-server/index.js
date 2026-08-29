@@ -184,7 +184,7 @@ server.tool(
     } catch (err) {
       return { isError: true, content: [{ type: "text", text: `Error: ${err.message}` }] };
     }
-  }
+  },
 );
 
 server.tool(
@@ -195,12 +195,15 @@ server.tool(
   },
   async ({ image }) => {
     try {
-      const result = await callMimo(image, "Extract and transcribe ALL visible text from this image exactly as written. Preserve formatting. If no text, say '(no text found)'.");
+      const result = await callMimo(
+        image,
+        "Extract and transcribe ALL visible text from this image exactly as written. Preserve formatting. If no text, say '(no text found)'.",
+      );
       return { content: [{ type: "text", text: result }] };
     } catch (err) {
       return { isError: true, content: [{ type: "text", text: `Error: ${err.message}` }] };
     }
-  }
+  },
 );
 
 server.tool(
@@ -220,7 +223,7 @@ server.tool(
     } catch (err) {
       return { isError: true, content: [{ type: "text", text: `Error: ${err.message}` }] };
     }
-  }
+  },
 );
 
 // ── Start ────────────────────────────────────────────────────────────────────

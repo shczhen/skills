@@ -9,7 +9,12 @@
   "scripts": {
     "start": "node index.js"
   },
-  "keywords": ["mcp", "image", "vision", "recognition"],
+  "keywords": [
+    "mcp",
+    "image",
+    "vision",
+    "recognition"
+  ],
   "license": "MIT",
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.29.0",

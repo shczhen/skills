@@ -10,9 +10,11 @@ import os
 import re
 import shutil
 import subprocess
-from datetime import datetime, timezone
+import sys
+from datetime import datetime, time, timedelta, timezone
 from pathlib import Path
 from urllib.parse import quote
+from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
 
 IMAGE_EXTENSIONS = {".png", ".jpg", ".jpeg", ".gif", ".webp", ".bmp", ".tif", ".tiff", ".svg"}
@@ -116,6 +118,13 @@ def get_gist(gist_id: str) -> dict:
     return gh_json([f"gists/{gist_id}"])
 
 
+def replace_gist(gist: dict, config_path: Path) -> dict:
+    replacement = create_gist(gist.get("description") or DEFAULT_DESCRIPTION)
+    write_saved_gist_id(config_path, replacement["id"])
+    run(["gh", "api", f"gists/{gist['id']}", "--method", "DELETE"])
+    return replacement
+
+
 def clone_or_update(gist: dict, cache_dir: Path, *, token: str) -> Path:
     gist_id = gist["id"]
     repo_dir = cache_dir / gist_id
@@ -149,13 +158,25 @@ def build_raw_url(owner: str, gist_id: str, filename: str) -> str:
     return f"https://gist.githubusercontent.com/{owner}/{gist_id}/raw/{quote(filename)}"
 
 
-def read_saved_gist_id(config_path: Path) -> str | None:
+def read_config(config_path: Path) -> dict:
     if not config_path.exists():
-        return None
+        return {}
     try:
         data = json.loads(config_path.read_text())
     except json.JSONDecodeError as exc:
         raise SystemExit(f"Invalid config JSON: {config_path}\n{exc}") from exc
+    if not isinstance(data, dict):
+        raise SystemExit(f"Config must contain a JSON object: {config_path}")
+    return data
+
+
+def write_config(config_path: Path, data: dict) -> None:
+    config_path.parent.mkdir(parents=True, exist_ok=True)
+    config_path.write_text(json.dumps(data, indent=2) + "\n")
+
+
+def read_saved_gist_id(config_path: Path) -> str | None:
+    data = read_config(config_path)
     gist_id = data.get("gist_id")
     if gist_id is not None and not isinstance(gist_id, str):
         raise SystemExit(f"Invalid gist_id in config: {config_path}")
@@ -163,9 +184,78 @@ def read_saved_gist_id(config_path: Path) -> str | None:
 
 
 def write_saved_gist_id(config_path: Path, gist_id: str) -> None:
-    config_path.parent.mkdir(parents=True, exist_ok=True)
-    data = {"gist_id": gist_id}
-    config_path.write_text(json.dumps(data, indent=2) + "\n")
+    data = read_config(config_path)
+    data["gist_id"] = gist_id
+    write_config(config_path, data)
+
+
+def retention_policy(config: dict) -> dict | None:
+    retention = config.get("retention")
+    if retention is None:
+        return None
+    if not isinstance(retention, dict):
+        raise SystemExit("retention config must be a JSON object")
+    if not retention.get("enabled", False):
+        return None
+
+    keep_days = retention.get("keep_days")
+    timezone_name = retention.get("timezone")
+    description_pattern = retention.get("description_pattern", "evidence")
+    if not isinstance(keep_days, int) or isinstance(keep_days, bool) or keep_days < 0:
+        raise SystemExit("retention.keep_days must be a non-negative integer")
+    if not isinstance(timezone_name, str) or not timezone_name:
+        raise SystemExit("retention.timezone must be a non-empty IANA timezone name")
+    if not isinstance(description_pattern, str) or not description_pattern:
+        raise SystemExit("retention.description_pattern must be a non-empty string")
+    try:
+        zone = ZoneInfo(timezone_name)
+    except ZoneInfoNotFoundError as exc:
+        raise SystemExit(f"Unknown retention timezone: {timezone_name}") from exc
+    return {
+        "keep_days": keep_days,
+        "timezone": timezone_name,
+        "zone": zone,
+        "description_pattern": description_pattern,
+    }
+
+
+def retention_cutoff(policy: dict, *, now: datetime | None = None) -> datetime:
+    local_now = now.astimezone(policy["zone"]) if now else datetime.now(policy["zone"])
+    cutoff_date = local_now.date() - timedelta(days=policy["keep_days"])
+    return datetime.combine(cutoff_date, time.min, tzinfo=policy["zone"])
+
+
+def rotate_expired_gist(gist: dict, config_path: Path, cutoff: datetime) -> tuple[dict, bool]:
+    created_at = datetime.fromisoformat(gist["created_at"].replace("Z", "+00:00"))
+    if created_at >= cutoff.astimezone(timezone.utc):
+        return gist, False
+    return replace_gist(gist, config_path), True
+
+
+def prune_account_for_retention(config_path: Path, cutoff: datetime, description_pattern: str) -> dict:
+    script_path = Path(__file__).with_name("cleanup_gist.py")
+    result = subprocess.run(
+        [
+            sys.executable,
+            str(script_path),
+            "prune-account",
+            "--before",
+            cutoff.isoformat(),
+            "--match-description",
+            description_pattern,
+            "--config",
+            str(config_path),
+            "--apply",
+        ],
+        text=True,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        check=False,
+    )
+    if result.returncode != 0:
+        details = result.stderr.strip() or result.stdout.strip() or f"exit code {result.returncode}"
+        raise RuntimeError(details)
+    return json.loads(result.stdout)
 
 
 def parse_args() -> argparse.Namespace:
@@ -198,8 +288,11 @@ def main() -> int:
     validate_image_path(image_path)
 
     config_path = args.config.expanduser().resolve()
+    config = read_config(config_path)
     saved_gist_id = read_saved_gist_id(config_path)
-    configured_gist_id = args.gist_id or os.environ.get("SCREENSHOT_GIST_ID") or saved_gist_id
+    override_gist_id = args.gist_id or os.environ.get("SCREENSHOT_GIST_ID")
+    configured_gist_id = override_gist_id or saved_gist_id
+    policy = retention_policy(config) if not override_gist_id else None
 
     if not configured_gist_id and not args.create:
         raise SystemExit("A reusable gist is required. Run once with --create, pass --gist-id, or set SCREENSHOT_GIST_ID.")
@@ -233,12 +326,29 @@ def main() -> int:
     gist_id = gist["id"]
     if args.create and not configured_gist_id:
         write_saved_gist_id(config_path, gist_id)
+    cutoff = retention_cutoff(policy) if policy else None
+    rotated = False
+    if cutoff and configured_gist_id:
+        gist, rotated = rotate_expired_gist(gist, config_path, cutoff)
+        gist_id = gist["id"]
     owner = gist["owner"]["login"]
     repo_dir = clone_or_update(gist, args.cache_dir.expanduser(), token=token)
 
     target_path = repo_dir / filename
     shutil.copyfile(image_path, target_path)
     commit_and_push(repo_dir, filename, token=token)
+
+    retention_result = None
+    retention_error = None
+    if cutoff:
+        try:
+            retention_result = prune_account_for_retention(
+                config_path,
+                cutoff,
+                policy["description_pattern"],
+            )
+        except RuntimeError as exc:
+            retention_error = str(exc)
 
     raw_url = build_raw_url(owner, gist_id, filename)
     result = {
@@ -249,6 +359,13 @@ def main() -> int:
         "filename": filename,
         "created": bool(args.create and not configured_gist_id),
         "config_path": str(config_path),
+        "retention": {
+            "enabled": bool(policy),
+            "cutoff": cutoff.isoformat() if cutoff else None,
+            "rotated": rotated,
+            "pruned_gists": retention_result["deleted_count"] if retention_result else 0,
+            "error": retention_error,
+        },
     }
     print(json.dumps(result, indent=2))
     return 0
