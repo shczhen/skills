@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Trying a skill and sharing feedback
+    url: https://github.com/shczhen/skills/blob/main/CONTRIBUTING.md
+    about: Read the short guide for trying skills, sharing feedback, and contributing changes.

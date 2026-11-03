@@ -42,3 +42,11 @@ Use `npm run format:check` for a non-writing check. Biome currently covers the r
 | Skill | Description |
 |---|---|
 | [`gist-screenshot-evidence`](skills/gist-screenshot-evidence/README.md) | Publish screenshot evidence to a reusable secret GitHub Gist for PR or issue comments. |
+
+## Feedback and contributions
+
+[Share usage feedback, report a problem, or suggest an improvement or new skill](https://github.com/shczhen/skills/issues/new/choose).
+The forms support multiple related skills and an Other / Unsure choice. Start
+with what you tried and what happened; a full diagnostic report is optional.
+See [CONTRIBUTING.md](CONTRIBUTING.md) for trying skills, preparing shareable
+feedback, and following up after a change.

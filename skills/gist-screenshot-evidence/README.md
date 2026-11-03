@@ -76,3 +76,9 @@ python3 skills/gist-screenshot-evidence/scripts/cleanup_gist.py configure-retent
 ```
 
 This provides a one-week buffer, rolls an older configured gist into a replacement before uploading, and prunes other expired evidence gists after a successful upload. Explicit `--gist-id` and `SCREENSHOT_GIST_ID` overrides bypass the policy.
+
+## Feedback
+
+See the [feedback guide](../../CONTRIBUTING.md) to share an experience, report a
+problem, or suggest a change. Select `gist-screenshot-evidence` in the Issue form;
+include other skills if the same problem involves them.
