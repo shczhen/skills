@@ -1,27 +1,43 @@
-# Work item title
+---
+template: living-one-pager
+template_version: "1.0.0"
+revision: 1
+updated_with: "living-one-pager@0.3.0"
+updated_at: "<document change date>"
+---
 
-Add an identifier, related project, maintainer, and update date when useful and supported. Leave unknown details open or omit them. Adapt sections as the work needs.
+# Product or capability name
 
-When joining ongoing or completed work, note the source and recording date where useful; the project's start date and current status come from its evidence, not the date this record was created.
+One sentence: what it is, who it helps, and the problem or benefit. Adapt these sections to the product; use existing facts, omit irrelevant sections, and link detail.
 
-Storage agreement: record the user's accepted destination, content scope, and detail level here, or link the project's existing agreement. Use the initialization guide for defaults; this template does not establish a choice.
+## Users, problem, and value
 
-## What we are trying to do
+Who uses it, in which situations, and what improves for them? Explain important differences with their evidence; distinguish intended benefit from demonstrated result.
 
-The product's users, the situation or problem, what changes, why it matters, and this round's scope. Note the content's readers or purpose separately when useful. Separate intended benefits from demonstrated results.
+## Capabilities and use cases
 
-## Current situation and next action
+What it does and representative uses. Explain components and how they work together when useful. Include current scope and known limitations.
 
-Progress established by the sources; if only a goal is supplied, progress remains unverified. Available behavior, access or timing when known, and limits. What has changed since the last account, and what input is needed next for content?
+## Experience it
+
+Existing access point, usage steps, example, or demo. Explain what someone can actually try and any known prerequisites.
+
+## Current availability and changes
+
+What is available, in development, or still proposed, as established by sources. Important changes should also update the relevant product explanation above. Link detailed progress and earlier releases where useful.
+
+## Evidence and feedback
+
+Results, comparisons, observations, or user feedback, with sources and relevant conditions. Keep claims, targets, user reports, and verified outcomes distinguishable.
 
 ## Content and materials
 
-Link the available explanations, usage steps, examples, demos, screenshots, documentation, code references, feedback, or data. Show what each useful item can support and its limits, then identify the next useful source or clarification. A material category is a collection prompt, not an available asset. Adapt these prompts to the work.
+Link existing handouts, blogs, videos, decks, documentation, demos, or other useful materials. Describe what they support, their actual status, and any statement affected by changes. Identify the next useful fact or material, without requiring every content format.
 
-## Discussions and decisions
+## Decisions and sources
 
-Key questions, different ideas, decisions, and their reasons. Link long discussions; briefly explain important changes.
+Important decisions and their basis; link detailed discussions and original material, retaining their scope and speaker roles. Reuse the project storage agreement or link it here.
 
-## Results and follow-up
+## Changelog
 
-Actual delivery, usage, feedback, data, or conclusions, and what to do next. Add information as it becomes available.
+Use the existing history if present. For a new page, record revision 1 as the creation of this product account, not the product's start or release. Add a short entry for a real saved change; an unchanged replay adds nothing.

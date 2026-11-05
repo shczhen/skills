@@ -1,19 +1,31 @@
-# Work item: communication brief
+---
+template: living-one-pager/communication-brief
+template_version: "1.0.0"
+revision: 1
+updated_with: "living-one-pager@0.3.0"
+updated_at: "<document change date>"
+---
 
-Source record and checked version/date: … · Material status: …
+# Product communication brief
+
+Source product page and checked revision: …
 
 ## Audience and purpose
 
-Who needs this, in what situation, and what they should understand or do. Distinguish expected value from observed results.
+Who needs this, in which situation, and what they should understand or do.
 
-## Confirmed account
+## Product account
 
-What exists or happened, actual availability if applicable, conditions, limits, and evidence. Label plans and unverified claims.
+What it is, the user problem and value, relevant capabilities, experience path, and actual availability. Distinguish intended benefit from demonstrated result.
 
-## Materials and next action
+## Evidence and materials
 
-Useful examples, demonstrations, documentation, or other source materials; intended reader action. Specify people, channel, timing, and review only where relevant and known.
+Source-backed claims, useful examples and assets, their limits, and unresolved statements.
 
-## Open questions and changes
+## Content to prepare or update
 
-What still needs a decision or fact check, affected claims, and links to earlier published versions when applicable. A prepared draft does not imply distribution or acceptance.
+Relevant formats, materials ready to use, important missing input, and next action. Use only known people, channels and dates. Drafting does not establish publication.
+
+## Changelog
+
+Short revision history with meaningful changes and source/reason. Preserve the checked source page revision so future product updates can identify outdated statements.

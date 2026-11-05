@@ -1,11 +1,23 @@
-# Fictional existing conversation
+# Fictional existing page and conversation
 
-Entirely synthetic input. The messages are ordered; their actual dates are not provided.
+Entirely synthetic. The old page had no template version, revision number, or product-event dates.
 
-**User:** 我已经做了一个把读书笔记导出为 Markdown 的小脚本，自己试过一本书，标题和段落可以保留。图片还没做。这轮只用于本地。
+## Prior unversioned page
 
-**Assistant:** 可以考虑下周公开发布，并增加云同步。
+```markdown
+# 本地媒体目录工具
+## 这轮做什么
+整理本地照片与录音的索引，方便后续找写作素材。
+## 已有进展
+用户报告本地索引已做好，自己检查过10个文件；没有给出其他平台结果。
+## 我的素材习惯
+保留原文件名；录音和照片分开放。
+## 决定
+不上传云端，暂不公开。助手建议下周发布，未被用户采纳。
+```
 
-**User:** 先不公开，也不做云同步。现在只想补一份使用说明，之后从导出的笔记整理一篇短文。图片支持以后再单独开一轮。
+## User's existing agreement and new request
 
-**User, invoking the skill now:** 把上面的聊天整理成一份持续维护的档案。保存方式用本地完整默认值，已有决定和进展都保留，不用让我重新讲。
+**User:** The records and their available originals stay local, complete and with history. Upgrade the existing page with the current template. Preserve our decisions, the old discussion, the original path, and my “我的素材习惯” section. I have not supplied a startup command or a demo file. This is an upgrade of the document, not a new development round.
+
+The earlier page above is retained as the pre-upgrade account for this example; this is not a claim that a real repository migration was executed.
