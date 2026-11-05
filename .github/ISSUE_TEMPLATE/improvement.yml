@@ -1,0 +1,39 @@
+name: Improvement or new skill
+description: Describe an unmet need, an improvement, or an idea for a new skill.
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Start with the situation and need. You do not have to design the solution.
+        Write in any language and share only information that can be public.
+  - type: dropdown
+    id: related-skills
+    attributes:
+      label: Related skills or scope
+      description: Select all that apply, including New skill if appropriate.
+      multiple: true
+      options:
+        - anti-defensive-writing
+        - gist-screenshot-evidence
+        - living-one-pager
+        - Repository / installation / documentation
+        - New skill
+        - Other / Unsure
+  - type: textarea
+    id: need
+    attributes:
+      label: What situation or need should this address?
+      description: Explain what you want to do and what is missing or difficult today.
+      placeholder: When I... I need... At the moment...
+    validations:
+      required: true
+  - type: textarea
+    id: outcome
+    attributes:
+      label: What would a useful result look like?
+      description: Optional. An example or description of the desired experience is enough.
+  - type: textarea
+    id: ideas
+    attributes:
+      label: Ideas, workarounds, or related examples
+      description: Optional. Share any approach you have tried or would like us to consider.

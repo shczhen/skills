@@ -1,0 +1,44 @@
+name: Usage feedback or problem
+description: Tell us what helped, what was confusing, or what went wrong.
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Feedback can be short and in any language. Describe what you observed; you do not need to know the cause.
+        Keep private conversations and files local. Share only relevant examples you are comfortable making public.
+  - type: dropdown
+    id: related-skills
+    attributes:
+      label: Related skills or scope
+      description: Select all that apply, or choose Other / Unsure.
+      multiple: true
+      options:
+        - anti-defensive-writing
+        - gist-screenshot-evidence
+        - living-one-pager
+        - Repository / installation / documentation
+        - Other / Unsure
+  - type: textarea
+    id: experience
+    attributes:
+      label: What were you trying to do, and what happened?
+      description: Describe the task and actual result. Helpful experiences are welcome too.
+      placeholder: I tried to... The result was... This helped / confused me because...
+    validations:
+      required: true
+  - type: textarea
+    id: expected-result
+    attributes:
+      label: What would you have preferred?
+      description: Optional. Explain the result or experience you wanted.
+  - type: textarea
+    id: context
+    attributes:
+      label: Tool, model, and skill version or source
+      description: Optional. Include what you know; Unknown is fine. Do not include credentials.
+      placeholder: "Tool: Codex / Claude Code / other; model: ...; installed from: ...; version or commit: ..."
+  - type: textarea
+    id: example
+    attributes:
+      label: Example, output, or screenshot
+      description: Optional. A small prompt, relevant output, or shareable screenshot can help us understand. Remove private details first.
