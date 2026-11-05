@@ -1,6 +1,6 @@
 ---
 name: living-one-pager
-description: "Create and maintain a product one-pager that explains what a product or capability is, who it helps, its value, how to use it, and the evidence and materials available for content. Use existing conversations, product pages, demos, or updates; keep the same product entry current and upgrade older one-pagers when asked."
+description: "Create and maintain a product one-pager that explains what a product or capability is, who it helps, its value, how to use it, and the evidence and materials available for content. Use existing conversations, product pages, demos, or updates; keep the same product entry and its content materials current."
 metadata:
   version: "0.3.0"
 ---
@@ -35,7 +35,7 @@ Read the current page and relevant sources before changing it. Put a new capabil
 
 Tie claims to sources and conditions. Distinguish intended value from observed results, user reports from independent verification, and suggestions from decisions. Describe missing evidence as **not provided / unknown**. Reserve **not started / unpublished / no feedback** for a source that explicitly establishes that absence: a next goal or draft label is insufficient. A new document does not reset product progress. When descriptions disagree, compare their scope and conditions and surface the unresolved difference; do not choose a number or release status without evidence.
 
-Preserve relevant original material and substantive user and assistant discussion within the storage agreement, with roles and coverage clear. Summarize changes on the main page and link longer history. See [update guidance](references/updates.md) for continuity, material changes, and repeated input.
+Preserve relevant original material and substantive user and assistant discussion within the storage agreement. Under full-history storage, copy available user messages verbatim, including their qualifiers; keep any summary alongside the original. Label assistant processing notes as summaries unless retaining their original text. Keep roles and coverage clear. Summarize changes on the main page and link longer history. See [update guidance](references/updates.md) for continuity, material changes, and repeated input.
 
 ## Agree storage once
 
@@ -47,11 +47,11 @@ Reuse an explicit project agreement. Otherwise present these defaults together, 
 
 Provide the useful product synthesis while saving awaits a choice. Loading a local skill or continuing the discussion is not accepting storage. After defaults are shown, an explicit request to create/save can accept them; an existing clear choice needs no repeated confirmation. Use another local path, Gist, document/wiki, or combined destinations when selected and available. A supplied link for reading is not permission to overwrite it. Keep the agreement in the existing project entry or linked history so setup does not dominate the product overview.
 
-## Version the page and upgrade deliberately
+## Version the page
 
-Skill version is `0.3.0`; the main template is `living-one-pager` version `1.0.0`. New pages record the applied template version, their own revision, the skill used, and the document update date. For a wiki, show the same information in a small version line.
+Skill version is `0.3.0`; the main template is `living-one-pager` version `0.1.0`. New pages record the applied template version, their own revision, the skill used, and the document update date. For a wiki, show the same information in a small version line.
 
-Read [version and upgrade guidance](references/versions.md) when creating a versioned page, changing a page, or upgrading an old one. Increment its revision for an actual saved change, add a short changelog entry, and keep a replay/no-op unchanged. The installed skill version and the page's applied template version are independent. An ordinary product update preserves the existing format unless a restructuring/upgrade is requested; updating the skill alone does not migrate user documents.
+Read [version guidance](references/versions.md) when creating or changing a page. Increment its revision for an actual saved change, add a short changelog entry, and keep a replay/no-op unchanged. This is a versioned draft, with no migration contract for earlier drafts. Skill updates and a page's applied template version are independent; future template changes will describe their differences and any needed adaptation in the changelog. Keep existing content and custom sections when maintaining a page.
 
 ## Use and improve the material
 

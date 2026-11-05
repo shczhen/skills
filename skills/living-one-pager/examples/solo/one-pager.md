@@ -1,6 +1,6 @@
 ---
 template: living-one-pager
-template_version: "1.0.0"
+template_version: "0.1.0"
 revision: 1
 updated_with: "living-one-pager@0.3.0"
 updated_at: "2026-11-05"
@@ -26,4 +26,4 @@ updated_at: "2026-11-05"
 
 | 修订 | 日期 | 变化 |
 |---|---|---|
-| 1 | 2026-11-05 | 从已有成果建立产品说明，采用模板1.0.0；沿用本地完整保存选择，保留原始输入 |
+| 1 | 2026-11-05 | 从已有成果建立产品说明，采用模板0.1.0；沿用本地完整保存选择，保留原始输入 |

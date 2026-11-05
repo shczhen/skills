@@ -1,6 +1,6 @@
 ---
 template: living-one-pager
-template_version: "1.0.0"
+template_version: "0.1.0"
 revision: 1
 updated_with: "living-one-pager@0.3.0"
 updated_at: "<document change date>"

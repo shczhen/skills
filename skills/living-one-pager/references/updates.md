@@ -1,6 +1,6 @@
 # Maintaining the same product entry
 
-Read the current overview, its relevant sources/history, storage agreement, and page version. Follow [version guidance](versions.md) for revision changes and requested upgrades.
+Read the current overview, its relevant sources/history, storage agreement, and page version. Follow [version guidance](versions.md) for revision changes.
 
 A capability, new goal, release, measurement, or iteration normally belongs to the same product entry. Update the affected product explanation, use cases, experience path, availability, evidence, and materials. Keep the definition and unaffected information intact. A separate page is useful for a distinct product/capability with its own explanation, not merely because a work round has ended.
 
