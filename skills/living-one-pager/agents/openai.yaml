@@ -1,0 +1,4 @@
+interface:
+  display_name: "Living One-pager"
+  short_description: "Collect content inputs and keep the one-pager current"
+  default_prompt: "Use $living-one-pager to collect the content inputs available for this work, clarify important gaps, and keep its one-pager updated."

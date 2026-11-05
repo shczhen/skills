@@ -4,7 +4,7 @@ Personal agent skills for writing and development, installable with [skills.sh](
 
 ## Install
 
-Install the skill with the skills.sh CLI:
+Install skills with the skills.sh CLI:
 
 ```bash
 npx skills@latest add shczhen/skills
@@ -27,7 +27,8 @@ npx skills@latest add shczhen/skills --skill anti-defensive-writing
 ```text
 skills/
 ├── anti-defensive-writing/
-└── gist-screenshot-evidence/
+├── gist-screenshot-evidence/
+└── living-one-pager/
 ```
 
 Each folder contains its skill instructions and any supporting resources.
@@ -49,6 +50,7 @@ Use `npm run format:check` for a non-writing check. Biome currently covers the r
 |---|---|
 | [`anti-defensive-writing`](skills/anti-defensive-writing/SKILL.md) | Writing guidance for direct, precise GPT-6.x replies and documents. |
 | [`gist-screenshot-evidence`](skills/gist-screenshot-evidence/README.md) | Publish screenshot evidence to a reusable secret GitHub Gist for PR or issue comments. |
+| [`living-one-pager`](skills/living-one-pager/README.md) | Collect content inputs from ideas, conversations, or existing work and keep a one-pager current. Early trial. |
 
 ## Feedback and contributions
 
@@ -57,3 +59,14 @@ The forms support multiple related skills and an Other / Unsure choice. Start
 with what you tried and what happened; a full diagnostic report is optional.
 See [CONTRIBUTING.md](CONTRIBUTING.md) for trying skills, preparing shareable
 feedback, and following up after a change.
+
+## Try Living One-pager
+
+```bash
+npx skills@latest add shczhen/skills --skill living-one-pager
+```
+
+Use it with your existing conversation or materials to collect what content needs
+and maintain the same one-pager as work changes. It supports solo use and defaults
+to local records after a one-time storage choice. See the [guide and fictional
+examples](skills/living-one-pager/README.md) for use, updates, and known trial limits.

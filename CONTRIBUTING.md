@@ -2,7 +2,7 @@
 
 ## Try a skill
 
-Start with that skill's README and a real task. Keep track of its installation source or commit when available, so you can tell which version you tried. Unknown is fine.
+Start with that skill's instructions or README and a real task. Keep track of its installation source or commit when available, so you can tell which version you tried. Unknown is fine.
 
 You can keep notes in your own files or conversation. No extra skill, account, or feedback tool is required for local use. Follow each skill's actual storage and publishing behavior; this repository does not collect your conversations automatically.
 

@@ -13,7 +13,9 @@ body:
       description: Select all that apply, or choose Other / Unsure.
       multiple: true
       options:
+        - anti-defensive-writing
         - gist-screenshot-evidence
+        - living-one-pager
         - Repository / installation / documentation
         - Other / Unsure
   - type: textarea
