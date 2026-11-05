@@ -1,6 +1,6 @@
 # skills
 
-Personal agent skill for publishing screenshot evidence to GitHub Gist, installable with [skills.sh](https://www.skills.sh/shczhen/skills).
+Personal agent skills for writing and development, installable with [skills.sh](https://www.skills.sh/shczhen/skills).
 
 ## Install
 
@@ -16,15 +16,21 @@ Or with Bun:
 bunx skills@latest add shczhen/skills
 ```
 
+Install a specific skill:
+
+```bash
+npx skills@latest add shczhen/skills --skill anti-defensive-writing
+```
+
 ## Layout
 
 ```text
 skills/
+├── anti-defensive-writing/
 └── gist-screenshot-evidence/
 ```
 
-The `gist-screenshot-evidence` folder contains the skill instructions, scripts,
-and tests.
+Each folder contains its skill instructions and any supporting resources.
 
 ## Development
 
@@ -41,6 +47,7 @@ Use `npm run format:check` for a non-writing check. Biome currently covers the r
 
 | Skill | Description |
 |---|---|
+| [`anti-defensive-writing`](skills/anti-defensive-writing/SKILL.md) | Writing guidance for direct, precise GPT-6.x replies and documents. |
 | [`gist-screenshot-evidence`](skills/gist-screenshot-evidence/README.md) | Publish screenshot evidence to a reusable secret GitHub Gist for PR or issue comments. |
 
 ## Feedback and contributions
