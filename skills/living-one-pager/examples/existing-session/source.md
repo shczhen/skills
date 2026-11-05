@@ -1,11 +1,11 @@
-# Fictional existing conversation
+# Fictional existing work and conversation
 
-Entirely synthetic input. The messages are ordered; their actual dates are not provided.
+Entirely synthetic. This example shows intake of existing work, not a version migration.
 
-**User:** 我已经做了一个把读书笔记导出为 Markdown 的小脚本，自己试过一本书，标题和段落可以保留。图片还没做。这轮只用于本地。
+**User:** I made a local index for my photos and recordings so I can find material for later writing. It is already done; I checked ten files myself. I have not provided results from other platforms, a startup command, or a demo file.
 
-**Assistant:** 可以考虑下周公开发布，并增加云同步。
+**User:** Keep original filenames, and keep recordings and photos separate. Please keep this preference as a section called “我的素材习惯”.
 
-**User:** 先不公开，也不做云同步。现在只想补一份使用说明，之后从导出的笔记整理一篇短文。图片支持以后再单独开一轮。
+**Assistant:** We could publish it next week.
 
-**User, invoking the skill now:** 把上面的聊天整理成一份持续维护的档案。保存方式用本地完整默认值，已有决定和进展都保留，不用让我重新讲。
+**User:** That is only a suggestion; I have not adopted a release plan. Do not upload the product to the cloud, and do not publish it now. Keep these records, related materials and available original conversations locally, as completely as possible, with history. Make a product account from what is already here.

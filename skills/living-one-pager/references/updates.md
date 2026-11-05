@@ -1,18 +1,15 @@
-# Updating a round of work
+# Maintaining the same product entry
 
-Read the existing record, storage agreement, and relevant materials before editing. Reuse the identifier and location for the same goal.
+Read the current overview, its relevant sources/history, storage agreement, and page version. Follow [version guidance](versions.md) for revision changes.
 
-If the skill is first invoked after work has begun, bring the existing conversation and artifacts into the current account using [source intake guidance](workflow.md#existing-work-and-sessions). This can create the first record of already completed work; it does not restart the project or require the user to retell its history.
+A capability, new goal, release, measurement, or iteration normally belongs to the same product entry. Update the affected product explanation, use cases, experience path, availability, evidence, and materials. Keep the definition and unaffected information intact. A separate page is useful for a distinct product/capability with its own explanation, not merely because a work round has ended.
 
-- Incorporate new facts and corrections with their sources. Absence from the latest message does not cancel an earlier fact or decision.
-- Apply an explicit new user decision within its scope; retain the important earlier decision and why it changed. A suggestion from someone else is not automatically an adopted decision.
-- Merge repeated feedback or source material into existing entries. Do not count a replay as another event, outcome, or work item.
-- Extend the linked source/history with newly available relevant user and assistant discussion and materials under the storage agreement, while summarizing the current account on the main page. Preserve original files; mark corrections in the account or a linked annotation. Leave event dates unknown when only their order is known.
-- Update related drafts when they are part of the task. Retain published versions and explain corrections through a linked revision or annotation.
-- Record actual progress, availability, and results accurately. A completed draft is not a published message; a measured result needs its actual source and conditions.
-- Keep content inputs current: when scope, availability, usage, or evidence changes, revise the relevant account and material links, and show which explanations or drafts need attention. Ask contributors for the remaining useful facts or artifacts; recording a missing feature does not assign its implementation to this skill.
-- Synchronize to the one-pager destinations already agreed for those materials. Report what was updated and what could not be written; do not invent a new destination or claim an external update based only on a local draft.
+Keep a short account of what changed and why. Important earlier decisions remain traceable; absence from the latest message does not cancel them. Assistant proposals and tentative dates remain proposals until adopted. Preserve existing local sections and preferences unless the user asks to change them.
 
-For ordinary feedback, retain the concrete situation, what helped or went wrong, and any action or conclusion. Use the existing feedback section/file when present. A natural-language comment is enough to start; ask for more information only when it changes the next useful action.
+Retain newly available original materials and substantive user and assistant discussion under the agreement. Repeated evidence or feedback refers to the existing source; it is not another event or outcome. Replaying the same input does not advance the document revision or create duplicate changelog entries.
 
-When a local workflow or template changes, record its scope and reason. Preserve user customizations and existing records during skill updates. A proposed change, an implemented change, and the user's observed result may occur at different times; describe the current situation without inventing completion.
+Use actual product availability and evidence. A merged change, a working local example, a public announcement, and demonstrated user impact can occur at different times. Missing material does not establish that development, a release, or feedback does not exist.
+
+For content affected by a product change, identify the specific claim or usage steps and the relevant handout, blog, deck, demo, or tutorial. Update an included, writable draft in place. For a published, out-of-scope, or inaccessible asset, record what needs attention without claiming it has been changed. Synchronize only the destinations already selected for the material; an update request does not create background monitoring or authorize messages to others.
+
+Keep ordinary feedback with its situation, desired/observed result, and follow-up. Use a user's local format for a personal preference; consider changes to shared instructions or templates when the issue is reusable. Preserve product records during skill updates.

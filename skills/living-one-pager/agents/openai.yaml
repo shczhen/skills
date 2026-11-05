@@ -1,4 +1,4 @@
 interface:
   display_name: "Living One-pager"
-  short_description: "Collect content inputs and keep the one-pager current"
-  default_prompt: "Use $living-one-pager to collect the content inputs available for this work, clarify important gaps, and keep its one-pager updated."
+  short_description: "Maintain product explanations, evidence, and content materials"
+  default_prompt: "Use $living-one-pager to explain this product from our existing work and keep its one-pager, evidence, and content materials current."
