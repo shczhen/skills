@@ -50,7 +50,7 @@ Use `npm run format:check` for a non-writing check. Biome currently covers the r
 |---|---|
 | [`anti-defensive-writing`](skills/anti-defensive-writing/SKILL.md) | Writing guidance for direct, precise GPT-6.x replies and documents. |
 | [`gist-screenshot-evidence`](skills/gist-screenshot-evidence/README.md) | Publish screenshot evidence to a reusable secret GitHub Gist for PR or issue comments. |
-| [`living-one-pager`](skills/living-one-pager/README.md) | Maintain a product explanation, evidence, and content materials, with versioned draft templates and document changelogs. |
+| [`living-one-pager`](skills/living-one-pager/README.md) | Keep one product page true: what works today, which claims content may make, and what materials exist. |
 
 ## Feedback and contributions
 
@@ -66,9 +66,9 @@ feedback, and following up after a change.
 npx skills@latest add shczhen/skills --skill living-one-pager
 ```
 
-Use it with your existing conversation or materials to explain a product and keep
-its one-pager and content materials current through releases and iteration. Skill
-0.3.0 includes draft template 0.1.0, page revisions, and changelogs. Future template
-changes will describe their differences when defined. It supports solo use and local storage defaults.
-See the [guide and fictional examples](skills/living-one-pager/README.md) for use,
-updates, and trial limits.
+Use it to build a product page from existing material, update it after the
+product changes, and prepare content from it. Skill 0.4.0 replaces the 0.3.0 page
+format: every fact has one home, and a claims table records what content may say
+and on what basis. Pages written with 0.3.0 move into the new skeleton on their
+next update.
+See the [guide and fictional example](skills/living-one-pager/README.md).

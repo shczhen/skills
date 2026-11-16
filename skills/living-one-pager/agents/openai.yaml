@@ -1,4 +1,4 @@
 interface:
   display_name: "Living One-pager"
-  short_description: "Maintain product explanations, evidence, and content materials"
-  default_prompt: "Use $living-one-pager to explain this product from our existing work and keep its one-pager, evidence, and content materials current."
+  short_description: "Keep one product page true: status, claims, and materials"
+  default_prompt: "Use $living-one-pager to build or update the product page for this product from our existing material."
